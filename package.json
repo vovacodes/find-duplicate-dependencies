@@ -4,9 +4,6 @@
   "description": "Find duplicated dependencies in your node_modules. Useful when use npm as a package manager for front-end.",
   "main": "find-duplicated-dependencies.js",
   "bin": "bin/cmd",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Vladimir Guguiev <wizardzloy@gmail.com>",
   "license": "ISC",
   "dependencies": {
