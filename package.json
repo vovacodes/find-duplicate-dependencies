@@ -1,6 +1,6 @@
 {
   "name": "find-duplicated-dependencies",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Find duplicated dependencies in your node_modules. Useful when use npm as a package manager for front-end.",
   "main": "find-duplicated-dependencies.js",
   "bin": "bin/cmd",
