@@ -1,0 +1,19 @@
+{
+  "name": "find-duplicated-dependencies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "find-duplicated-dependencies.js",
+  "bin": "bin/cmd",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vladimir Guguiev <wizardzloy@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^1.1.0",
+    "es6-promise": "^2.3.0",
+    "lodash.pairs": "^3.0.1",
+    "lodash.zipobject": "^3.0.0",
+    "npm": "^2.13.0"
+  }
+}
