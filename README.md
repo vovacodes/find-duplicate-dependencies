@@ -28,7 +28,7 @@ This command exits with 1 if there are some duplicates and with 0 if there are n
 ### API
 
 ```javascript
-var findDuplicatedDependencies = require('../find-duplicated-dependencies');
+var findDuplicatedDependencies = require('find-duplicated-dependencies');
 
 findDuplicatedDependencies().then(
     function(duplicates) {
