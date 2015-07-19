@@ -2,9 +2,9 @@
 
 var util = require('util');
 var chalk = require('chalk');
-var findDuplicatedDependencies = require('../find-duplicated-dependencies');
+var findDuplicateDependencies = require('../find-duplicate-dependencies');
 
-findDuplicatedDependencies().then(
+findDuplicateDependencies().then(
     function(duplicates) {
 
       if (Object.keys(duplicates).length) {
@@ -24,12 +24,12 @@ findDuplicatedDependencies().then(
 
 function printSuccessMessage() {
 
-  console.log(chalk.green('There are no duplicated dependencies in your package. Congratulations!'));
+  console.log(chalk.green('There are no duplicate dependencies in your package. Congratulations!'));
 }
 
 function printFailMessage(duplicates) {
 
-  console.log(chalk.red('This package has the following duplicated dependencies:\n'));
+  console.log(chalk.red('This package has the following duplicate dependencies:\n'));
 
   Object.keys(duplicates).forEach(function(key) {
 

@@ -5,7 +5,7 @@ var pairs = require('lodash.pairs');
 var zipObject = require('lodash.zipobject');
 var Promise = require('es6-promise').Promise;
 
-function findDuplicatedDependencies(options) {
+function findDuplicateDependencies(options) {
 
   options || (options = {});
 
@@ -66,5 +66,5 @@ function catalogDependencies(dependencies, path) {
   }
 }
 
-module.exports = findDuplicatedDependencies;
+module.exports = findDuplicateDependencies;
 

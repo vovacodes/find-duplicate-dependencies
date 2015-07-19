@@ -1,18 +1,18 @@
-# find-duplicated-dependencies
-Find duplicated dependencies in your node_modules. Useful when use npm as a package manager for front-end.
+# find-duplicate-dependencies
+Finds duplicate dependencies in your node_modules. Useful when use npm as a package manager for front-end.
 
 ## Install
 
 for CLI usage
 
 ```
-> npm install -g find-duplicated-dependencies
+> npm install -g find-duplicate-dependencies
 ```
 
 for API usage
 
 ```
-> npm install find-duplicated-dependencies
+> npm install find-duplicate-dependencies
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ for API usage
 ### CLI
 
 ```
-> find-duplicated-dependencies
+> find-duplicate-dependencies
 ```
 
 This command exits with 1 if there are some duplicates and with 0 if there are not.
@@ -28,9 +28,9 @@ This command exits with 1 if there are some duplicates and with 0 if there are n
 ### API
 
 ```javascript
-var findDuplicatedDependencies = require('find-duplicated-dependencies');
+var findDuplicateDependencies = require('find-duplicate-dependencies');
 
-findDuplicatedDependencies().then(
+findDuplicateDependencies().then(
     function(duplicates) {
     
       /*
