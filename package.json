@@ -1,13 +1,13 @@
 {
   "name": "find-duplicate-dependencies",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find duplicate dependencies in your node_modules. Useful when use npm as a package manager for front-end.",
   "main": "find-duplicate-dependencies.js",
   "bin": "bin/cmd",
   "author": "Vladimir Guguiev <wizardzloy@gmail.com>",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/wizardzloy/find-duplicate-dependencies.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wizardzloy/find-duplicate-dependencies.git"
   },
   "license": "ISC",
   "dependencies": {
