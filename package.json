@@ -5,6 +5,10 @@
   "main": "find-duplicate-dependencies.js",
   "bin": "bin/cmd",
   "author": "Vladimir Guguiev <wizardzloy@gmail.com>",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/wizardzloy/find-duplicate-dependencies.git"
+  },
   "license": "ISC",
   "dependencies": {
     "chalk": "^1.1.0",
