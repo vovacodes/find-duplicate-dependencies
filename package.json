@@ -1,6 +1,6 @@
 {
   "name": "find-duplicate-dependencies",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Find duplicate dependencies in your node_modules. Useful when use npm as a package manager for front-end.",
   "main": "find-duplicate-dependencies.js",
   "bin": "bin/cmd",
@@ -15,6 +15,6 @@
     "es6-promise": "^2.3.0",
     "lodash.pairs": "^3.0.1",
     "lodash.zipobject": "^3.0.0",
-    "npm": "^2.13.0"
+    "npm": "^4.4.0"
   }
 }
