@@ -13,6 +13,7 @@
   "dependencies": {
     "chalk": "^1.1.0",
     "es6-promise": "^2.3.0",
+    "lodash.find": "^4.6.0",
     "lodash.pairs": "^3.0.1",
     "lodash.zipobject": "^3.0.0",
     "npm": "^4.4.0"

@@ -3,6 +3,7 @@
 var npm = require('npm');
 var pairs = require('lodash.pairs');
 var zipObject = require('lodash.zipobject');
+var find = require('lodash.find');
 var Promise = require('es6-promise').Promise;
 
 function findDuplicateDependencies(options) {
@@ -48,12 +49,16 @@ function catalogDependencies(dependencies, path) {
         acc[name] = [];
       }
 
-      acc[name].push({
-        name: name,
-        version: moduleObj.version,
-        from: moduleObj.from,
-        path: path
-      });
+      var isAdded = Boolean(find(acc[name], {version: moduleObj.version}));
+      
+      if (!isAdded) {
+        acc[name].push({
+          name: name,
+          version: moduleObj.version,
+          from: moduleObj.from,
+          path: path
+        });
+      }
 
       if (moduleObj.dependencies) {
         return _catalogDependencies(acc, moduleObj.dependencies, path.concat('/' + name));
@@ -67,4 +72,3 @@ function catalogDependencies(dependencies, path) {
 }
 
 module.exports = findDuplicateDependencies;
-
