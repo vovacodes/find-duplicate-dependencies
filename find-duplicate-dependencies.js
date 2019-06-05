@@ -2,7 +2,7 @@
 
 var npm = require('npm');
 var pairs = require('lodash.pairs');
-var zipObject = require('lodash.zipobject');
+var fromPairs = require('lodash.frompairs');
 var find = require('lodash.find');
 var Promise = require('es6-promise').Promise;
 
@@ -25,7 +25,7 @@ function findDuplicateDependencies(options) {
           return entry[1].length > 1;
         });
 
-        resolve(zipObject(duplicatePairs));
+        resolve(fromPairs(duplicatePairs));
 
       });
 
