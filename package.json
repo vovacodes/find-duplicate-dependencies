@@ -16,6 +16,7 @@
     "lodash.find": "^4.6.0",
     "lodash.frompairs": "^4.0.1",
     "lodash.pairs": "^3.0.1",
-    "npm": "^6.9.0"
+    "npm": "^6.9.0",
+    "yargs-parser": "^13.1.0"
   }
 }

@@ -4,8 +4,20 @@ var util = require('util');
 var chalk = require('chalk');
 var findDuplicateDependencies = require('../find-duplicate-dependencies');
 
+var argv = require('yargs-parser')(process.argv.slice(2), {
+  array: ['exclude'],
+  default: {
+    exclude: []
+  }
+})
+
+
 findDuplicateDependencies().then(
     function(duplicates) {
+
+      argv.exclude.forEach(function(dep) {
+        delete duplicates[dep]
+      })
 
       if (Object.keys(duplicates).length) {
 

@@ -25,6 +25,12 @@ for API usage
 
 This command exits with 1 if there are some duplicates and with 0 if there are not.
 
+You can exclude some dependencies from check by passing `--exclude` option:
+
+```
+> find-duplicate-dependencies --exclude express react
+```
+
 ### API
 
 ```javascript
