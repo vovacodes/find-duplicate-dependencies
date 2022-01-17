@@ -3,19 +3,32 @@
   "version": "2.0.0",
   "description": "Find duplicate dependencies in your node_modules. Useful when use npm as a package manager for front-end.",
   "main": "find-duplicate-dependencies.js",
-  "bin": "bin/cmd",
+  "bin": {
+    "find-duplicate-dependencies": "bin/cli.js"
+  },
+  "files": [
+    "bin/cli.js",
+    "find-duplicate-dependencies.js"
+  ],
   "author": "Vladimir Guguiev <wizardzloy@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wizardzloy/find-duplicate-dependencies.git"
+    "url": "git+https://github.com/vovacodes/find-duplicate-dependencies.git"
   },
+  "bugs": {
+    "url": "https://github.com/vovacodes/find-duplicate-dependencies/issues"
+  },
+  "homepage": "https://github.com/vovacodes/find-duplicate-dependencies#readme",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^1.1.0",
-    "es6-promise": "^2.3.0",
-    "lodash.find": "^4.6.0",
-    "lodash.pairs": "^3.0.1",
-    "lodash.zipobject": "^3.0.0",
-    "npm": "^6.14.6"
-  }
+    "npm": "^6.14.15",
+    "picocolors": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": []
 }

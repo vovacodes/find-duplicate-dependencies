@@ -1,74 +1,53 @@
 'use strict';
 
-var npm = require('npm');
-var pairs = require('lodash.pairs');
-var zipObject = require('lodash.zipobject');
-var find = require('lodash.find');
-var Promise = require('es6-promise').Promise;
+const npm = require('npm');
 
-function findDuplicateDependencies(options) {
-
-  options || (options = {});
-
-  return new Promise(function(resolve, reject) {
-
-    npm.load({production: !options.checkDevDependencies, json: true}, function(err) {
-
+function findDuplicateDependencies(options = {}) {
+  return new Promise((resolve, reject) => {
+    npm.load({ production: !options.checkDevDependencies, json: true }, (err) => {
       if (err) return reject(err);
 
-      npm.commands.ls([], true, function(err, packageInfo, packageObj) {
-
+      npm.commands.ls([], true, (err, packageInfo, packageObj) => {
         if (err) return reject(err);
 
-        var catalog = catalogDependencies(packageObj.dependencies, packageObj.name);
-        var duplicatePairs = pairs(catalog).filter(function (entry) {
-          return entry[1].length > 1;
-        });
+        const catalog = catalogDependencies(packageObj.dependencies, packageObj.name);
+        const duplicatePairs = Object.entries(catalog).filter((entry) => entry[1].length > 1);
 
-        resolve(zipObject(duplicatePairs));
-
+        resolve(Object.fromEntries(duplicatePairs));
       });
-
-    })
+    });
   });
-
 }
 
 function catalogDependencies(dependencies, path) {
-
   return _catalogDependencies({}, dependencies, path);
+}
 
-  function _catalogDependencies(result, dependencies, path) {
+function _catalogDependencies(result, dependencies, path) {
+  return Object.entries(dependencies || {}).reduce((acc, entry) => {
+    const [name, moduleObj] = entry;
 
-    return pairs(dependencies).reduce(function(acc, entry) {
+    if (!acc[name]) {
+      acc[name] = [];
+    }
 
-      var name = entry[0];
-      var moduleObj = entry[1];
+    const isAdded = acc[name].some((pack) => pack.version === moduleObj.version);
 
-      if (!acc[name]) {
-        acc[name] = [];
-      }
+    if (!isAdded) {
+      acc[name].push({
+        name,
+        version: moduleObj.version,
+        from: moduleObj.from,
+        path
+      });
+    }
 
-      var isAdded = Boolean(find(acc[name], {version: moduleObj.version}));
-      
-      if (!isAdded) {
-        acc[name].push({
-          name: name,
-          version: moduleObj.version,
-          from: moduleObj.from,
-          path: path
-        });
-      }
+    if (moduleObj.dependencies) {
+      return _catalogDependencies(acc, moduleObj.dependencies, `${path}/${name}`);
+    }
 
-      if (moduleObj.dependencies) {
-        return _catalogDependencies(acc, moduleObj.dependencies, path.concat('/' + name));
-      }
-
-      return acc;
-
-    }, result);
-
-  }
+    return acc;
+  }, result);
 }
 
 module.exports = findDuplicateDependencies;
