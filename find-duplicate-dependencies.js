@@ -1,8 +1,6 @@
-'use strict';
+import npm from 'npm';
 
-const npm = require('npm');
-
-function findDuplicateDependencies(options = {}) {
+export default function findDuplicateDependencies(options = {}) {
   return new Promise((resolve, reject) => {
     npm.load({ production: !options.checkDevDependencies, json: true }, (err) => {
       if (err) return reject(err);
@@ -49,5 +47,3 @@ function _catalogDependencies(result, dependencies, path) {
     return acc;
   }, result);
 }
-
-module.exports = findDuplicateDependencies;

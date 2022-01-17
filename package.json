@@ -3,6 +3,10 @@
   "version": "2.0.0",
   "description": "Find duplicate dependencies in your node_modules. Useful when use npm as a package manager for front-end.",
   "main": "find-duplicate-dependencies.js",
+  "type": "module",
+  "exports": {
+    ".": "./find-duplicate-dependencies.js"
+  },
   "bin": {
     "find-duplicate-dependencies": "bin/cli.js"
   },
@@ -25,7 +29,7 @@
     "picocolors": "^1.0.0"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12.20.0 || ^14.14.0 || >=16.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
