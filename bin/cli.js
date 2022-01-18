@@ -4,8 +4,12 @@ import process from 'node:process';
 import { inspect } from 'node:util';
 import pc from 'picocolors';
 import findDuplicateDependencies from '../find-duplicate-dependencies.js';
+import minimist from "minimist"
 
-findDuplicateDependencies().then((duplicates) => {
+const argv = minimist(process.argv.slice(2));
+const exclude = argv.exclude?.split(",") ?? [];
+
+findDuplicateDependencies({ exclude }).then((duplicates) => {
   if (Object.keys(duplicates).length > 0) {
     printFailMessage(duplicates);
     return process.exit(1);

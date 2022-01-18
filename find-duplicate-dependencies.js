@@ -1,6 +1,7 @@
 import npm from 'npm';
 
 export default function findDuplicateDependencies(options = {}) {
+  const exclude = new Set(options.exclude ?? [])
   return new Promise((resolve, reject) => {
     npm.load({ production: !options.checkDevDependencies, json: true }, (err) => {
       if (err) return reject(err);
@@ -9,7 +10,7 @@ export default function findDuplicateDependencies(options = {}) {
         if (err) return reject(err);
 
         const catalog = catalogDependencies(packageObj.dependencies, packageObj.name);
-        const duplicatePairs = Object.entries(catalog).filter((entry) => entry[1].length > 1);
+        const duplicatePairs = Object.entries(catalog).filter(([name, occurrences]) => occurrences.length > 1 && !exclude.has(name));
 
         resolve(Object.fromEntries(duplicatePairs));
       });
